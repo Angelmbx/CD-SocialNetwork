@@ -42,7 +42,7 @@ public class User {
         this.postList = postList;
     }
 
-    private static ArrayList<User> followNewUser(User user,User followedUser){
+    private static ArrayList<User> followNewUser(User user, User followedUser){
         user.getUserList().add(followedUser);
 
         return (ArrayList<User>) user.getUserList();
@@ -56,5 +56,22 @@ public class User {
 
     private static void listUsersPosts (User user){
         System.out.println("Posts by user "+user+": \n"+user.getPostList());
+    }
+
+    private static void createPost(int actionButton){
+
+        switch (actionButton){
+            case 1: //text
+            break;
+            case 2: //image
+            break;
+            case 3: //video
+            break;
+            default:
+                System.err.println("Choose between 1,2,3 to create a post.");
+
+        }
+
+
     }
 }
