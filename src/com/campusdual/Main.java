@@ -35,12 +35,12 @@ public class Main {
     }
 
 
-    private static User createUser() {
+    private static void  createUser() {
         System.out.println("Enter user nickname: ");
         String userName = Input.string();
         User u = null;
 
-        // Verifica si el nombre de usuario elegido ya existe.
+        // Checks if the username exists already.
         boolean usernameExists = false;
         for (User user : signedUpUsers) {
             if (user.getName().equals(userName)) {
@@ -58,22 +58,29 @@ public class Main {
             System.out.println(signedUpUsers);
             secondMenu(u);
         }
-
-        return u;
     }
-    private static User logIn() {
+
+
+    private static void logIn() {
         System.out.println("Enter user nickname: ");
         String userName = Input.string();
-        User logged = null;
-        Iterator<User> iterator = signedUpUsers.iterator();
-        while (iterator.hasNext()) {
-            User user = iterator.next();
+        User userLogged = null;
+
+        // Checks if the username exists already.
+        boolean usernameExists = false;
+        for (User user : signedUpUsers) {
             if (user.getName().equals(userName)) {
-                System.out.println("Welcome back " + userName);
-                logged = user;
+                usernameExists = true;
+                userLogged = user;
+                break;
             }
         }
-        return logged;
+        if (usernameExists) {
+                System.out.println("Welcome back " + userName);
+                secondMenu(userLogged);
+            } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
     }
 
     private static void mainMenu() {
@@ -92,11 +99,6 @@ public class Main {
                 break;
             case 2:
                 logIn();
-                if (logIn()!= null){
-                    secondMenu(logIn());}//checks if the user name is in the list.
-                else {
-                    System.out.println("User doesn't exist. Try again later");
-                }
                 break;
             case 3:
                 System.out.println("See you soon!");
