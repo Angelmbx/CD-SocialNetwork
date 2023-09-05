@@ -51,7 +51,7 @@ public class Main {
             case 2:
                 logIn();
                 break;
-            case 3:
+            case 0:
                 System.out.println("See you soon!");
                 System.exit(0);
             default:
