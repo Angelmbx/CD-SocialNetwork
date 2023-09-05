@@ -4,14 +4,13 @@ import com.campusdual.model.*;
 import com.campusdual.util.Input;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main {
 
     public static List<User> signedUpUsers = new ArrayList<>();
     public static List<Post> totalPostsList = new ArrayList<>();
-    public static List<Comments> totalCommentsList = new ArrayList<>();
+    public static List<Comment> totalCommentsList = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -22,11 +21,14 @@ public class Main {
     private static void initialUsers() {
         //Initial users so you can log in, or follow any of these once you sign up.
 
+        User admin = new User("Admin"); // Admin user who can Delete other users, posts, comments.
+
         User u1 = new User("Maria");
         User u2 = new User("Carlos");
         User u3 = new User("Isabel");
         User u4 = new User("Paco");
 
+        signedUpUsers.add(admin);
         signedUpUsers.add(u1);
         signedUpUsers.add(u2);
         signedUpUsers.add(u3);
@@ -122,22 +124,29 @@ public class Main {
                 followUser(user);
                 break;
             case 2:
+                unfollowUser(user);
             case 3:
             case 4:
             case 5:
+                if (user.getName().toLowerCase().equals("ADMIN".toLowerCase())){
+                deleteUser(user);
+                }else {
+                    System.out.println("Only admin user can delete other user.");
+                    secondMenu(user);
+                }
+                break;
             case 6:
             case 7:
             case 8:
             case 9:
             case 10:
-                System.out.println("Eleccion");
-                break;
             case 11:
                 System.out.println("See you soon!");
                 System.exit(0);
         }
 
     }
+
 
     private static void followUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
@@ -158,13 +167,70 @@ public class Main {
         }
         if (usernameExists) {
             followedUsers.add(userToFollow);
-            System.out.println(userLogged.getName()+" is following now "+userToFollow.getName());
-            System.out.println(userLogged.getFollowedUsers());
+            System.out.println(userLogged.getName()+" is now following "+userToFollow.getName());
+            System.out.println(userLogged.getName()+"'s follow list: "+"\n"+userLogged.getFollowedUsers()+"\n");
             secondMenu(userLogged);
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+    private static void unfollowUser(User userLogged) {
+        ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
+
+        System.out.println("Type the username you want to unfollow");
+        String userName = Input.string();
+
+        User userToUnfollow = null;
+
+        // Checks if the username exists.
+        boolean usernameExists = false;
+        for (User u : signedUpUsers) {
+            if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                userToUnfollow= u;
+                break;
+            }
+        }
+        if (usernameExists) {
+            followedUsers.remove(userToUnfollow);
+            System.out.println(userLogged.getName()+" is no longer following "+userToUnfollow.getName());
+            System.out.println(userLogged.getName()+"'s follow list: "+"\n"+userLogged.getFollowedUsers()+"\n");
+            secondMenu(userLogged);
+        } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
+    }
+
+    private static void deleteUser(User userLogged) {
+
+        System.out.println("Type the username you want to delete");
+        String userName = Input.string();
+
+        User userToDelete = null;
+
+        // Checks if the username exists.
+        boolean usernameExists = false;
+        for (User u : signedUpUsers) {
+            if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                userToDelete= u;
+                break;
+            }
+        }
+        if (usernameExists) {
+            signedUpUsers.remove(userToDelete);
+            System.out.println("User "+userToDelete.getName()+" has been deleted.");
+            System.out.println("Users in the list:"+"\n"+signedUpUsers+"\n");
+            secondMenu(userLogged);
+        } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
+
+    }
+
+
+
+
 }
 
 

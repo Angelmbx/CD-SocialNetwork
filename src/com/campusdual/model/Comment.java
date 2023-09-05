@@ -2,7 +2,7 @@ package com.campusdual.model;
 
 import java.time.LocalDateTime;
 
-public class Comments {
+public class Comment {
 
     private Text text;
     private LocalDateTime date;

@@ -7,11 +7,11 @@ import java.util.List;
 public class Post {
 
     private LocalDateTime date;
-    private List <Comments> commentsList;
+    private List <Comment> commentsList;
 
     public Post() {
         this.date = LocalDateTime.now();
-        this.commentsList = new ArrayList<Comments>();
+        this.commentsList = new ArrayList<Comment>();
     }
 
     public LocalDateTime getDate() {
@@ -22,11 +22,11 @@ public class Post {
         this.date = date;
     }
 
-    public List<Comments> getCommentsList() {
+    public List<Comment> getCommentsList() {
         return commentsList;
     }
 
-    public void setCommentsList(List<Comments> commentsList) {
+    public void setCommentsList(List<Comment> commentsList) {
         this.commentsList = commentsList;
     }
 }
