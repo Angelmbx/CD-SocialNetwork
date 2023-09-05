@@ -54,6 +54,8 @@ public class Main {
             case 3:
                 System.out.println("See you soon!");
                 System.exit(0);
+            default:
+                System.out.println("Invalid answer. Choose an option between 1 to 3");
         }
 
     }
@@ -125,28 +127,39 @@ public class Main {
                 break;
             case 2:
                 unfollowUser(user);
+                break;
             case 3:
+                createPost(user);
+                break;
             case 4:
+                break;
             case 5:
                 if (user.getName().toLowerCase().equals("ADMIN".toLowerCase())){
                 deleteUser(user);
                 }else {
-                    System.out.println("Only admin user can delete other user.");
+                    System.out.println("Only admin user can delete another user.");
                     secondMenu(user);
                 }
                 break;
             case 6:
+                break;
             case 7:
+                break;
             case 8:
+                break;
             case 9:
+                break;
             case 10:
+                break;
             case 11:
                 System.out.println("See you soon!");
                 System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid answer. Choose an option between 1 to 11");
         }
 
     }
-
 
     private static void followUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
@@ -199,6 +212,30 @@ public class Main {
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
+    }
+    private static void createPost(User userLogged) {
+        System.out.println("What do you want to share?\n"+"1.Text | 2.Picture | 3.Video");
+        int response = Input.integer();
+
+        switch (response){
+            case 1:
+                Text t = new Text();
+                userLogged.getPostList().add(t);
+                System.out.println(userLogged.getPostList());
+                break;
+            case 2:
+                Image img = new Image();
+                userLogged.getPostList().add(img);
+                break;
+            case 3:
+                Video vid = new Video();
+                userLogged.getPostList().add(vid);
+                break;
+            default:
+                System.out.println("Invalid answer. Choose an option between 1 to 3");
+        }
+
+
     }
 
     private static void deleteUser(User userLogged) {
