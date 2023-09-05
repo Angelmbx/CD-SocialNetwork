@@ -39,7 +39,7 @@ public class Main {
         System.out.println("How are you feeling today?");
         System.out.println("1. Sign up");
         System.out.println("2. Log in");
-        System.out.println("3. Exit");
+        System.out.println("0. Exit");
 
         int response = Input.integer();
 
@@ -55,7 +55,7 @@ public class Main {
                 System.out.println("See you soon!");
                 System.exit(0);
             default:
-                System.out.println("Invalid answer. Choose an option between 1 to 3");
+                System.out.println("Invalid answer. Choose an option between 0 to 2");
         }
 
     }
@@ -117,7 +117,7 @@ public class Main {
         System.out.println("8. Show user's posts");
         System.out.println("9. Show user's comments");
         System.out.println("10. Show post's comments");
-        System.out.println("11. Exit");
+        System.out.println("0. Exit");
 
         int response = Input.integer();
 
@@ -151,12 +151,12 @@ public class Main {
                 break;
             case 10:
                 break;
-            case 11:
+            case 0:
                 System.out.println("See you soon!");
                 System.exit(0);
                 break;
             default:
-                System.out.println("Invalid answer. Choose an option between 1 to 11");
+                System.out.println("Invalid answer. Choose an option between 0 to 10");
         }
 
     }
@@ -214,25 +214,32 @@ public class Main {
         }
     }
     private static void createPost(User userLogged) {
-        System.out.println("What do you want to share?\n"+"1.Text | 2.Picture | 3.Video");
+        System.out.println("What do you want to share?\n"+"1.Text | 2.Picture | 3.Video | 0. Back to the menu");
         int response = Input.integer();
 
         switch (response){
             case 1:
                 Text t = new Text();
                 userLogged.getPostList().add(t);
-                System.out.println(userLogged.getPostList());
+                System.out.println("Text posted successfully");
+                secondMenu(userLogged);
                 break;
             case 2:
                 Image img = new Image();
                 userLogged.getPostList().add(img);
+                System.out.println("Picture posted successfully");
+                secondMenu(userLogged);
                 break;
             case 3:
                 Video vid = new Video();
                 userLogged.getPostList().add(vid);
+                System.out.println("Video posted successfully");
+                secondMenu(userLogged);
                 break;
+            case 0:
+                secondMenu(userLogged);
             default:
-                System.out.println("Invalid answer. Choose an option between 1 to 3");
+                System.out.println("Invalid answer. Choose an option between 0 to 3");
         }
 
 
