@@ -6,9 +6,9 @@ import java.util.List;
 public class SocialNetwork {
 
 
-    private List<User> signedUpUsers = new ArrayList<>();
-    private List<Post> totalPostsList = new ArrayList<>();
-    private List<Comments> totalCommentsList = new ArrayList<>();
+    private final List<User> signedUpUsers = new ArrayList<>();
+    private final List<Post> totalPostsList = new ArrayList<>();
+    private final List<Comments> totalCommentsList = new ArrayList<>();
 
 
     public List<User> getSignedUpUsers() {

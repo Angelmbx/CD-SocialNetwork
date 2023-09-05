@@ -19,7 +19,6 @@ public class Main {
         mainMenu();
 
     }
-
     private static void initialUsers() {
         //Initial users so you can log in, or follow any of these once you sign up.
 
@@ -33,56 +32,6 @@ public class Main {
         signedUpUsers.add(u3);
         signedUpUsers.add(u4);
     }
-
-
-    private static void  createUser() {
-        System.out.println("Enter user nickname: ");
-        String userName = Input.string();
-        User u = null;
-
-        // Checks if the username exists already.
-        boolean usernameExists = false;
-        for (User user : signedUpUsers) {
-            if (user.getName().toLowerCase().equals(userName)) {
-                usernameExists = true;
-                break;
-            }
-        }
-
-        if (usernameExists) {
-            System.out.println("Username is already taken. Try again later.");
-        } else {
-            u = new User(userName);
-            signedUpUsers.add(u); // Crea el usuario y lo agrega a la lista de usuarios.
-            System.out.println("Registered successfully. Nice to have you here " + userName + "!");
-            System.out.println(signedUpUsers);
-            secondMenu(u);
-        }
-    }
-
-
-    private static void logIn() {
-        System.out.println("Enter user nickname: ");
-        String userName = Input.string();
-        User userLogged = null;
-
-        // Checks if the username exists already.
-        boolean usernameExists = false;
-        for (User user : signedUpUsers) {
-            if (user.getName().toLowerCase().equals(userName)) {
-                usernameExists = true;
-                userLogged = user;
-                break;
-            }
-        }
-        if (usernameExists) {
-                System.out.println("Welcome back " + userName);
-                secondMenu(userLogged);
-            } else {
-            System.out.println("User doesn't exist. Try again later.");
-        }
-    }
-
     private static void mainMenu() {
         System.out.println("-------WELCOME-------");
         System.out.println("How are you feeling today?");
@@ -106,7 +55,51 @@ public class Main {
         }
 
     }
+    private static void  createUser() {
+        System.out.println("Enter user nickname: ");
+        String userName = Input.string();
+        User u = null;
 
+        // Checks if the username exists already.
+        boolean usernameExists = false;
+        for (User user : signedUpUsers) {
+            if (user.getName().toLowerCase().equals(userName.toLowerCase()))  {
+                usernameExists = true;
+                break;
+            }
+        }
+
+        if (usernameExists) {
+            System.out.println("Username is already taken. Try again later.");
+        } else {
+            u = new User(userName);
+            signedUpUsers.add(u); // Crea el usuario y lo agrega a la lista de usuarios.
+            System.out.println("Registered successfully. Nice to have you here " + userName + "!");
+            System.out.println(signedUpUsers);
+            secondMenu(u);
+        }
+    }
+    private static void logIn() {
+        System.out.println("Enter user nickname: ");
+        String userName = Input.string();
+        User userLogged = null;
+
+        // Checks if the username exists already.
+        boolean usernameExists = false;
+        for (User user : signedUpUsers) {
+            if (user.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                userLogged = user;
+                break;
+            }
+        }
+        if (usernameExists) {
+                System.out.println("Welcome back " + userName);
+                secondMenu(userLogged);
+            } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
+    }
     private static void secondMenu(User user) {
         System.out.println("---------- LOGGED IN ----------");
         System.out.println("What do you want to do now?");
@@ -126,6 +119,8 @@ public class Main {
 
         switch(response) {
             case 1:
+                followUser(user);
+                break;
             case 2:
             case 3:
             case 4:
@@ -142,6 +137,33 @@ public class Main {
                 System.exit(0);
         }
 
+    }
+
+    private static void followUser(User userLogged) {
+        ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
+
+        System.out.println("Type the username you want to follow");
+        String userName = Input.string();
+
+        User userToFollow = null;
+
+        // Checks if the username exists.
+        boolean usernameExists = false;
+        for (User u : signedUpUsers) {
+            if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                userToFollow= u;
+                break;
+            }
+        }
+        if (usernameExists) {
+            followedUsers.add(userToFollow);
+            System.out.println(userLogged.getName()+" is following now "+userToFollow.getName());
+            System.out.println(userLogged.getFollowedUsers());
+            secondMenu(userLogged);
+        } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
     }
 }
 
