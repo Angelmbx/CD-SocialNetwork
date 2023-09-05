@@ -1,4 +1,4 @@
-package model;
+package com.campusdual.model;
 
 public class Image extends Post{
 

@@ -1,4 +1,4 @@
-package model;
+package com.campusdual.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,10 +10,7 @@ public class Post {
     private List <Comments> commentsList;
 
     public Post() {
-    }
-
-    public Post(LocalDateTime date) {
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.commentsList = new ArrayList<Comments>();
     }
 

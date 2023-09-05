@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31c5a608-99e0-4a9a-88cd-be35f67ca660" name="Changes" comment="" />
+    <list default="true" id="31c5a608-99e0-4a9a-88cd-be35f67ca660" name="Changes" comment="wip">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Comments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Comments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/SocialNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/SocialNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Video.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,15 +44,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/angel/Desktop/BC-IMATIA/worksapce/BC-IMATIA-RedSocial"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/angel/Desktop/BC-IMATIA/worksapce/BC-IMATIA-RedSocial&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.campusdual" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
