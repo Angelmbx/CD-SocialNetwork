@@ -43,7 +43,7 @@ public class Main {
         // Checks if the username exists already.
         boolean usernameExists = false;
         for (User user : signedUpUsers) {
-            if (user.getName().equals(userName)) {
+            if (user.getName().toLowerCase().equals(userName)) {
                 usernameExists = true;
                 break;
             }
@@ -69,7 +69,7 @@ public class Main {
         // Checks if the username exists already.
         boolean usernameExists = false;
         for (User user : signedUpUsers) {
-            if (user.getName().equals(userName)) {
+            if (user.getName().toLowerCase().equals(userName)) {
                 usernameExists = true;
                 userLogged = user;
                 break;
