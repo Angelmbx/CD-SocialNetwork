@@ -35,12 +35,45 @@ public class Main {
     }
 
 
-    private static void createUser() {
+    private static User createUser() {
         System.out.println("Enter user nickname: ");
         String userName = Input.string();
+        User u = null;
 
-        User u = new User(userName);
-        signedUpUsers.add(u);
+        // Verifica si el nombre de usuario elegido ya existe.
+        boolean usernameExists = false;
+        for (User user : signedUpUsers) {
+            if (user.getName().equals(userName)) {
+                usernameExists = true;
+                break;
+            }
+        }
+
+        if (usernameExists) {
+            System.out.println("Username is already taken. Try again later.");
+        } else {
+            u = new User(userName);
+            signedUpUsers.add(u); // Crea el usuario y lo agrega a la lista de usuarios.
+            System.out.println("Registered successfully. Nice to have you here " + userName + "!");
+            System.out.println(signedUpUsers);
+            secondMenu(u);
+        }
+
+        return u;
+    }
+    private static User logIn() {
+        System.out.println("Enter user nickname: ");
+        String userName = Input.string();
+        User logged = null;
+        Iterator<User> iterator = signedUpUsers.iterator();
+        while (iterator.hasNext()) {
+            User user = iterator.next();
+            if (user.getName().equals(userName)) {
+                System.out.println("Welcome back " + userName);
+                logged = user;
+            }
+        }
+        return logged;
     }
 
     private static void mainMenu() {
@@ -56,14 +89,14 @@ public class Main {
         switch (response) {
             case 1:
                 createUser();
-                System.out.println("User added!");
-                secondMenu();
                 break;
             case 2:
-                if(logIn()){ //checks if the user name is in the list.
-                secondMenu();}
-                else { System.out.println("User doesn't exist. Check it and try again later!");
-                    System.exit(0);}
+                logIn();
+                if (logIn()!= null){
+                    secondMenu(logIn());}//checks if the user name is in the list.
+                else {
+                    System.out.println("User doesn't exist. Try again later");
+                }
                 break;
             case 3:
                 System.out.println("See you soon!");
@@ -72,25 +105,7 @@ public class Main {
 
     }
 
-    private static boolean logIn() {
-        System.out.println("Enter user nickname: ");
-        String userName = Input.string();
-
-        Iterator<User> iterator = signedUpUsers.iterator();
-        boolean logged = false;
-        while (iterator.hasNext()) {
-            User user = iterator.next();
-            if (user.getName().equals(userName)) {
-                System.out.println("Welcome back " + userName);
-                logged = true;
-           }/*  else if (!user.getName().equals(userName)){
-                System.out.println("User doesn't exist.");
-            }*/
-        }
-        return logged;
-    }
-
-    private static void secondMenu() {
+    private static void secondMenu(User user) {
         System.out.println("---------- LOGGED IN ----------");
         System.out.println("What do you want to do now?");
         System.out.println("1. Follow another user");
@@ -104,6 +119,27 @@ public class Main {
         System.out.println("9. Show user's comments");
         System.out.println("10. Show post's comments");
         System.out.println("11. Exit");
+
+        int response = Input.integer();
+
+        switch(response) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                System.out.println("Eleccion");
+                break;
+            case 11:
+                System.out.println("See you soon!");
+                System.exit(0);
+        }
+
     }
 }
 
