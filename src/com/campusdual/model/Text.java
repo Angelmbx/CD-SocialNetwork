@@ -1,15 +1,16 @@
 package com.campusdual.model;
 
+import com.campusdual.util.Input;
+
 import java.util.Scanner;
 
 public class Text extends Post{
 
     private String content;
 
-    Scanner sc = new Scanner(System.in);
     public Text() {
         System.out.println("Type whatever you want to say!: ");
-        this.content = sc.nextLine();
+        this.content = Input.string();
     }
 
     public String getContent() {

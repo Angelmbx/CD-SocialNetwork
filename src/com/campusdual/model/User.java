@@ -64,10 +64,13 @@ public class User {
 
         switch (actionButton){
             case 1: Text t = new Text();
+                System.out.println(t);
             return t;
             case 2: Image img = new Image();
+                System.out.println(img);
             return img;
             case 3: Video vid = new Video();
+                System.out.printf(vid.toString());
             return vid;
             default:
                 System.err.println("Choose between 1,2,3 to create a post.");
