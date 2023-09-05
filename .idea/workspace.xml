@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c5a608-99e0-4a9a-88cd-be35f67ca660" name="Changes" comment="wip">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/campusdual/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Comment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,16 +81,5 @@
       <updated>1693518005860</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/campusdual/Main.java</url>
-          <line>216</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

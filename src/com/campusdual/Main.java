@@ -21,7 +21,7 @@ public class Main {
     private static void initialUsers() {
         //Initial users so you can log in, or follow any of these once you sign up.
 
-        User admin = new User("Admin"); // Admin user who can Delete other users, posts, comments.
+        User admin = new User("Admin"); // Admin user who can Delete other users.
 
         User u1 = new User("Maria");
         User u2 = new User("Carlos");
@@ -132,6 +132,7 @@ public class Main {
                 createPost(user);
                 break;
             case 4:
+                commentPost(user);
                 break;
             case 5:
                 if (user.getName().toLowerCase().equals("ADMIN".toLowerCase())){
@@ -160,7 +161,6 @@ public class Main {
         }
 
     }
-
     private static void followUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
 
@@ -244,7 +244,6 @@ public class Main {
 
 
     }
-
     private static void deleteUser(User userLogged) {
 
         System.out.println("Type the username you want to delete");
@@ -269,6 +268,31 @@ public class Main {
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
+
+    }
+    private static void commentPost(User userLogged) {
+        ArrayList<Post> postList = (ArrayList<Post>) userLogged.getPostList();
+        System.out.println("Type the nickname of the user who made the post: ");
+        String userName = Input.string();
+
+        User author = null;
+
+        // Checks if the username exists.
+        boolean usernameExists = false;
+        for (User u : signedUpUsers) {
+            if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                author= u;
+                break;
+            }
+        }
+        if (usernameExists) {
+            System.out.println(author.getPostList());
+            secondMenu(userLogged);
+        } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
+
 
     }
 
