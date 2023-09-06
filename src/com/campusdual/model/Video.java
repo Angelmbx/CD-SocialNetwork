@@ -2,7 +2,7 @@ package com.campusdual.model;
 
 import com.campusdual.util.Input;
 
-public class Video extends Post{
+public class Video extends PostContent{
 
     private String title;
     private String quality;

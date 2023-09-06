@@ -4,19 +4,34 @@ import java.time.LocalDateTime;
 
 public class Comment {
 
-    private Text text;
+    private String text;
     private LocalDateTime date;
     private User author;
+    private Post commentedPost;
+
+    public Post getCommentedPost() {
+        return commentedPost;
+    }
+
+    public void setCommentedPost(Post commentedPost) {
+        this.commentedPost = commentedPost;
+    }
 
     public Comment() {
     this.date = LocalDateTime.now();
     }
 
-    public Text getText() {
+    public Comment( User author, String text, Post post) {
+        this.text = text;
+        this.date = LocalDateTime.now();
+        this.author = author;
+    }
+
+    public String getText() {
         return text;
     }
 
-    public void setText(Text text) {
+    public void setText(String text) {
         this.text = text;
     }
 

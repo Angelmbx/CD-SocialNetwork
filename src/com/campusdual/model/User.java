@@ -1,15 +1,15 @@
 package com.campusdual.model;
 
+import com.campusdual.util.Input;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
 
     private String name;
     private List<User> followedUsers;
     private List <Post> postList;
-    Scanner sc = new Scanner(System.in);
 
     public User() {
     }
@@ -58,7 +58,7 @@ public class User {
 
     public Object createPost(){
         System.out.println("What kind of post? Choose a number \n 1.Text 2.Image 3.Video");
-        String answer = sc.next();
+        String answer = Input.string();
 
         int actionButton = Integer.parseInt(answer);
 
@@ -80,11 +80,9 @@ public class User {
 
     }
 
+
     @Override
     public String toString() {
-        return "NAME: '" + name + '\'' +
-                ", FOLLOWING: " + followedUsers +
-                ", POSTS: " + postList;
-
+        return name;
     }
 }

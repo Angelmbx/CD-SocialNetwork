@@ -2,7 +2,7 @@ package com.campusdual.model;
 
 import com.campusdual.util.Input;
 
-public class Image extends Post{
+public class Image extends PostContent{
 
     private String title;
     private int height;
@@ -15,6 +15,12 @@ public class Image extends Post{
         this.height = Input.integer();
         System.out.println("Width: ");
         this.width = Input.integer();
+    }
+
+    public Image(String title, int height, int width) {
+        this.title = title;
+        this.height = height;
+        this.width = width;
     }
 
     @Override

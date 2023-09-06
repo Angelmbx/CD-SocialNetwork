@@ -33,6 +33,24 @@ public class Main {
         signedUpUsers.add(u2);
         signedUpUsers.add(u3);
         signedUpUsers.add(u4);
+
+        // Some users posts
+
+        Post p = new Post(u1, new Text("Trying out this new thing!"));
+        Post p2 = new Post(u1, new Text("Anybody out there?"));
+        Post p3 = new Post(u1, new Text("Damn, I think I'm alone here."));
+        Post p4 = new Post(u3, new Text("Today is gonna be a great day!"));
+        Post p5 = new Post(u3, new Image("Sunny dawn landscape", 300, 400));
+
+        // Some users comments
+
+        Comment c = new Comment(u2,"Hey! I'm here!", p2);
+        p2.getCommentsList().add(c); //add the new comment to the post's comments list.
+        Comment c2 = new Comment(u4,"No sir, there's a bunch of us here!" ,p3);
+        p3.getCommentsList().add(c2);
+        Comment c3 = new Comment(u1,"Nice picture",p5);
+        p5.getCommentsList().add(c3);
+
     }
     private static void mainMenu() {
         System.out.println("-------WELCOME-------");
@@ -217,22 +235,23 @@ public class Main {
         System.out.println("What do you want to share?\n"+"1.Text | 2.Picture | 3.Video | 0. Back to the menu");
         int response = Input.integer();
 
+
         switch (response){
             case 1:
                 Text t = new Text();
-                userLogged.getPostList().add(t);
+                userLogged.getPostList().add(new Post(userLogged,t));
                 System.out.println("Text posted successfully");
                 secondMenu(userLogged);
                 break;
             case 2:
                 Image img = new Image();
-                userLogged.getPostList().add(img);
+                userLogged.getPostList().add(new Post(userLogged, img));
                 System.out.println("Picture posted successfully");
                 secondMenu(userLogged);
                 break;
             case 3:
                 Video vid = new Video();
-                userLogged.getPostList().add(vid);
+                userLogged.getPostList().add(new Post(userLogged, vid));
                 System.out.println("Video posted successfully");
                 secondMenu(userLogged);
                 break;
@@ -241,8 +260,6 @@ public class Main {
             default:
                 System.out.println("Invalid answer. Choose an option between 0 to 3");
         }
-
-
     }
     private static void deleteUser(User userLogged) {
 
@@ -271,7 +288,7 @@ public class Main {
 
     }
     private static void commentPost(User userLogged) {
-        ArrayList<Post> postList = (ArrayList<Post>) userLogged.getPostList();
+        List<Post> postList = userLogged.getPostList();
         System.out.println("Type the nickname of the user who made the post: ");
         String userName = Input.string();
 
@@ -287,13 +304,16 @@ public class Main {
             }
         }
         if (usernameExists) {
-            System.out.println(author.getPostList());
+
+            //shows posts by the typed username
+            for (int i = 0; i < author.getPostList().size(); i++){
+                System.out.println( i + ": " + author.getPostList().get(i).toString());
+            }
+
             secondMenu(userLogged);
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
-
-
     }
 
 

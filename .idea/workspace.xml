@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c5a608-99e0-4a9a-88cd-be35f67ca660" name="Changes" comment="wip">
+      <change afterPath="$PROJECT_DIR$/src/com/campusdual/model/PostContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/campusdual/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Text.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/campusdual/model/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/campusdual/model/Video.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +54,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.campusdual.model" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.campusdual" />
     </key>
