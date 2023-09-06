@@ -144,7 +144,7 @@ public class Main {
         System.out.println("6. Delete post");
         System.out.println("7. Delete comment");
         System.out.println("8. Show user's posts");
-        System.out.println("9. Show comments by user");
+        System.out.println("9. Show user's comments");
         System.out.println("10. Show post's number of comments");
         System.out.println("0. Exit");
 
@@ -175,6 +175,7 @@ public class Main {
                 deletePost(user);
                 break;
             case 7:
+                deleteComment(user);
                 break;
             case 8:
                 showUsersPosts(user); // preguntar si se deben ver los comentarios
@@ -194,8 +195,6 @@ public class Main {
         }
 
     }
-
-
 
     private static void followUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
@@ -446,6 +445,26 @@ public class Main {
         System.out.println("Post deleted successfully");
             secondMenu(userLogged);
 
+    }
+    private static void deleteComment(User userLogged) {
+        List<Comment> comments = userLogged.getCommentList();
+
+        //shows posts by the logged user
+        for (int i = 0; i < comments.size(); i++) {
+            System.out.println( comments.get(i).getId()+ ": " + comments.get(i).toString());
+        }
+
+        System.out.println("Select the number of the post you want to delete");
+        int postIndex = Input.integer();
+
+        for (int i = 0; i < comments.size(); i++) {
+            if( postIndex == comments.get(i).getId()){
+
+                comments.remove(i); //deletes the selected post
+            }
+        }
+        System.out.println("Post deleted successfully");
+        secondMenu(userLogged);
     }
 
 

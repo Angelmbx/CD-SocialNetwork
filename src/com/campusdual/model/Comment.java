@@ -7,7 +7,9 @@ public class Comment {
     private String text;
     private LocalDateTime date;
     private User author;
+    private static int nextId = 1;
 
+    private int id;
 
     public Comment() {
     this.date = LocalDateTime.now();
@@ -18,6 +20,16 @@ public class Comment {
         this.date = LocalDateTime.now();
         this.author = author;
         this.author.getCommentList().add(this);
+        this.id = nextId++;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getText() {
