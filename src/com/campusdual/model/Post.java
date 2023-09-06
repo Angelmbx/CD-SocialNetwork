@@ -1,21 +1,25 @@
 package com.campusdual.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Post {
 
     private static int nextId = 1;
 
-    private LocalDateTime date;
+    private final DateFormat sdf = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
+    private Date date;
     private List <Comment> commentsList = new ArrayList<>();
     private User author;
     private int id;
     private PostContent postContent;
 
     public Post(User author, PostContent postContent) {
-        this.date = LocalDateTime.now();
+        this.date = new Date();
         this.author = author;
         this.postContent = postContent;
         this.author.getPostList().add(this);
@@ -30,11 +34,11 @@ public class Post {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -65,6 +69,6 @@ public class Post {
 
     @Override
     public String toString() {
-        return author +" AT "+date+" POSTED: " + postContent;
+        return author +" at "+sdf.format(date)+" POSTED: " + postContent;
     }
 }
