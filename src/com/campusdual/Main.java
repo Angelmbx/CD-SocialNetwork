@@ -19,6 +19,7 @@ public class Main {
 
     }
 
+
     private static void initialUsers() {
         //Initial users so you can log in, or follow any of these once you sign up.
 
