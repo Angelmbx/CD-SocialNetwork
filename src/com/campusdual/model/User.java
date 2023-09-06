@@ -10,6 +10,15 @@ public class User {
     private String name;
     private List<User> followedUsers;
     private List <Post> postList;
+    private List <Comment> commentList;
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
 
     public User() {
     }
@@ -18,6 +27,7 @@ public class User {
         this.name = name;
         this.followedUsers = new ArrayList<>();
         this.postList = new ArrayList<>();
+        this.commentList = new ArrayList<>();
     }
 
     public String getName() {

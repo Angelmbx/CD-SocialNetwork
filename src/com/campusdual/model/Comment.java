@@ -17,6 +17,7 @@ public class Comment {
         this.text = text;
         this.date = LocalDateTime.now();
         this.author = author;
+        this.author.getCommentList().add(this);
     }
 
     public String getText() {

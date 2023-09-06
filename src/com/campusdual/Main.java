@@ -18,6 +18,7 @@ public class Main {
         mainMenu();
 
     }
+
     private static void initialUsers() {
         //Initial users so you can log in, or follow any of these once you sign up.
 
@@ -48,16 +49,17 @@ public class Main {
         totalPostsList.add(p5);
         // Some users comments
 
-        Comment c = new Comment(u2,"Hey! I'm here!");
+        Comment c = new Comment(u2, "Hey! I'm here!");
         p2.getCommentsList().add(c); //add the new comment to the post's comments list.
         Comment c1 = new Comment(u4, "Yeah, me too!");
         p2.getCommentsList().add(c1);
-        Comment c2 = new Comment(u4,"No sir, there's a bunch of us here!");
+        Comment c2 = new Comment(u4, "No sir, there's a bunch of us here!");
         p3.getCommentsList().add(c2);
-        Comment c3 = new Comment(u1,"Nice picture");
+        Comment c3 = new Comment(u1, "Nice picture");
         p5.getCommentsList().add(c3);
 
     }
+
     private static void mainMenu() {
         System.out.println("-------WELCOME-------");
         System.out.println("How are you feeling today?");
@@ -83,7 +85,8 @@ public class Main {
         }
 
     }
-    private static void  createUser() {
+
+    private static void createUser() {
         System.out.println("Enter user nickname: ");
         String userName = Input.string();
         User u = null;
@@ -91,7 +94,7 @@ public class Main {
         // Checks if the username exists already.
         boolean usernameExists = false;
         for (User user : signedUpUsers) {
-            if (user.getName().toLowerCase().equals(userName.toLowerCase()))  {
+            if (user.getName().toLowerCase().equals(userName.toLowerCase())) {
                 usernameExists = true;
                 break;
             }
@@ -107,6 +110,7 @@ public class Main {
             secondMenu(u);
         }
     }
+
     private static void logIn() {
         System.out.println("Enter user nickname: ");
         String userName = Input.string();
@@ -122,12 +126,13 @@ public class Main {
             }
         }
         if (usernameExists) {
-                System.out.println("Welcome back " + userName);
-                secondMenu(userLogged);
-            } else {
+            System.out.println("Welcome back " + userName);
+            secondMenu(userLogged);
+        } else {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+
     private static void secondMenu(User user) {
         System.out.println("---------- LOGGED IN ----------");
         System.out.println("What do you want to do now?");
@@ -139,13 +144,13 @@ public class Main {
         System.out.println("6. Delete post");
         System.out.println("7. Delete comment");
         System.out.println("8. Show user's posts");
-        System.out.println("9. Show your comments made");
+        System.out.println("9. Show comments by user");
         System.out.println("10. Show post's number of comments");
         System.out.println("0. Exit");
 
         int response = Input.integer();
 
-        switch(response) {
+        switch (response) {
             case 1:
                 followUser(user);
                 break;
@@ -159,9 +164,9 @@ public class Main {
                 commentPost(user);
                 break;
             case 5:
-                if (user.getName().toLowerCase().equals("ADMIN".toLowerCase())){
-                deleteUser(user);
-                }else {
+                if (user.getName().toLowerCase().equals("ADMIN".toLowerCase())) {
+                    deleteUser(user);
+                } else {
                     System.out.println("Only admin user can delete another user.");
                     secondMenu(user);
                 }
@@ -190,7 +195,6 @@ public class Main {
     }
 
 
-
     private static void followUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
 
@@ -204,19 +208,20 @@ public class Main {
         for (User u : signedUpUsers) {
             if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
                 usernameExists = true;
-                userToFollow= u;
+                userToFollow = u;
                 break;
             }
         }
         if (usernameExists) {
             followedUsers.add(userToFollow);
-            System.out.println(userLogged.getName()+" is now following "+userToFollow.getName());
-            System.out.println(userLogged.getName()+"'s follow list: "+"\n"+userLogged.getFollowedUsers()+"\n");
+            System.out.println(userLogged.getName() + " is now following " + userToFollow.getName());
+            System.out.println(userLogged.getName() + "'s follow list: " + "\n" + userLogged.getFollowedUsers() + "\n");
             secondMenu(userLogged);
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+
     private static void unfollowUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
 
@@ -230,25 +235,26 @@ public class Main {
         for (User u : signedUpUsers) {
             if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
                 usernameExists = true;
-                userToUnfollow= u;
+                userToUnfollow = u;
                 break;
             }
         }
         if (usernameExists) {
             followedUsers.remove(userToUnfollow);
-            System.out.println(userLogged.getName()+" is no longer following "+userToUnfollow.getName());
-            System.out.println(userLogged.getName()+"'s follow list: "+"\n"+userLogged.getFollowedUsers()+"\n");
+            System.out.println(userLogged.getName() + " is no longer following " + userToUnfollow.getName());
+            System.out.println(userLogged.getName() + "'s follow list: " + "\n" + userLogged.getFollowedUsers() + "\n");
             secondMenu(userLogged);
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+
     private static void createPost(User userLogged) {
-        System.out.println("What do you want to share?\n"+"1.Text | 2.Picture | 3.Video | 0. Back to the menu");
+        System.out.println("What do you want to share?\n" + "1.Text | 2.Picture | 3.Video | 0. Back to the menu");
         int response = Input.integer();
 
 
-        switch (response){
+        switch (response) {
             case 1:
                 Text t = new Text();
                 Post textPost = new Post(userLogged, t);
@@ -279,6 +285,7 @@ public class Main {
                 System.out.println("Invalid answer. Choose an option between 0 to 3");
         }
     }
+
     private static void deleteUser(User userLogged) {
 
         System.out.println("Type the username you want to delete");
@@ -291,20 +298,21 @@ public class Main {
         for (User u : signedUpUsers) {
             if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
                 usernameExists = true;
-                userToDelete= u;
+                userToDelete = u;
                 break;
             }
         }
         if (usernameExists) {
             signedUpUsers.remove(userToDelete);
-            System.out.println("User "+userToDelete.getName()+" has been deleted.");
-            System.out.println("Users in the list:"+"\n"+signedUpUsers+"\n");
+            System.out.println("User " + userToDelete.getName() + " has been deleted.");
+            System.out.println("Users in the list:" + "\n" + signedUpUsers + "\n");
             secondMenu(userLogged);
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
 
     }
+
     private static void showUsersPosts(User userLogged) {
         List<Post> postList = userLogged.getPostList();
         System.out.println("Type the nickname of the user you want to check: ");
@@ -317,15 +325,15 @@ public class Main {
         for (User u : signedUpUsers) {
             if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
                 usernameExists = true;
-                author= u;
+                author = u;
                 break;
             }
         }
         if (usernameExists) {
 
             //shows posts by the typed username
-            for (int i = 0; i < author.getPostList().size(); i++){
-                System.out.println( i + ": " + author.getPostList().get(i).toString());
+            for (int i = 0; i < author.getPostList().size(); i++) {
+                System.out.println(i + ": " + author.getPostList().get(i).toString());
             }
 
 
@@ -334,6 +342,7 @@ public class Main {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+
     private static void commentPost(User userLogged) {
         List<Post> postList = userLogged.getPostList();
         System.out.println("Type the nickname of the user who made the post: ");
@@ -346,15 +355,15 @@ public class Main {
         for (User u : signedUpUsers) {
             if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
                 usernameExists = true;
-                author= u;
+                author = u;
                 break;
             }
         }
         if (usernameExists) {
 
             //shows posts by the typed username
-            for (int i = 0; i < author.getPostList().size(); i++){
-                System.out.println( i + ": " + author.getPostList().get(i).toString());
+            for (int i = 0; i < author.getPostList().size(); i++) {
+                System.out.println(i + ": " + author.getPostList().get(i).toString());
             }
 
             int index = Input.integer("Type the index of the post you want to comment: ");
@@ -369,45 +378,53 @@ public class Main {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+
     private static void showPostsCommentsNumber(User userLogged) {
 
-            //shows all the posts in the social network
-            for (int i = 0; i <totalPostsList.size(); i++){
-                System.out.println( i + ": " + totalPostsList.get(i).toString());
-            }
+        //shows all the posts in the social network
+        for (int i = 0; i < totalPostsList.size(); i++) {
+            System.out.println(i + ": " + totalPostsList.get(i).toString());
+        }
 
-            int index = Input.integer("Type the index of the post you want to check the comments number ");
-            Post selectedPost = totalPostsList.get(index);
+        int index = Input.integer("Type the index of the post you want to check the comments number ");
+        Post selectedPost = totalPostsList.get(index);
 
-            System.out.println("The number of comments for this post is: " +selectedPost.getCommentsList().size());
+        System.out.println("The number of comments for this post is: " + selectedPost.getCommentsList().size());
 
-            secondMenu(userLogged);
+        secondMenu(userLogged);
     }
+
     private static void showUserCommentsMade(User userLogged) {
-       /* List<Comment> userCommentsMade = new ArrayList<>();
+        List<Comment> userCommentsMade = new ArrayList<>();
+        System.out.println("Type the nickname of the user you want to check: ");
+        String userName = Input.string();
 
-        for (User u : signedUpUsers){
-            for (Post p : u.getPostList()){
-                for (Comment c : p.getCommentsList()) {
-                    if (c.getAuthor().getName().equals(userLogged.getName())){
-                        userCommentsMade.add(c);
-                    }
-                }
+        User author = null;
+
+        // Checks if the username exists.
+        boolean usernameExists = false;
+        for (User u : signedUpUsers) {
+            if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                author = u;
+                break;
             }
         }
-        System.out.println("Comments from user: " + userLogged.getName());
+        if (usernameExists) {
 
-        for (Comment c : userCommentsMade){
-            System.out.println(c.toString());
-        }
-*/
+            //shows comments by the typed username
+            for (Comment c : author.getCommentList()) {
+                System.out.println(c);
+            }
+
             secondMenu(userLogged);
+        } else {
+            System.out.println("User doesn't exist. Try again later.");
+
+            secondMenu(userLogged);
+        }
+
     }
-
-
-
-
-
 }
 
 
