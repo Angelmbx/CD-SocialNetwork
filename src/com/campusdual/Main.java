@@ -37,15 +37,21 @@ public class Main {
         // Some users posts
 
         Post p = new Post(u1, new Text("Trying out this new thing!"));
+        totalPostsList.add(p);
         Post p2 = new Post(u1, new Text("Anybody out there?"));
+        totalPostsList.add(p2);
         Post p3 = new Post(u1, new Text("Damn, I think I'm alone here."));
+        totalPostsList.add(p3);
         Post p4 = new Post(u3, new Text("Today is gonna be a great day!"));
+        totalPostsList.add(p4);
         Post p5 = new Post(u3, new Image("Sunny dawn landscape", 300, 400));
-
+        totalPostsList.add(p5);
         // Some users comments
 
         Comment c = new Comment(u2,"Hey! I'm here!");
         p2.getCommentsList().add(c); //add the new comment to the post's comments list.
+        Comment c1 = new Comment(u4, "Yeah, me too!");
+        p2.getCommentsList().add(c1);
         Comment c2 = new Comment(u4,"No sir, there's a bunch of us here!");
         p3.getCommentsList().add(c2);
         Comment c3 = new Comment(u1,"Nice picture");
@@ -133,8 +139,8 @@ public class Main {
         System.out.println("6. Delete post");
         System.out.println("7. Delete comment");
         System.out.println("8. Show user's posts");
-        System.out.println("9. Show user's comments");
-        System.out.println("10. Show post's comments");
+        System.out.println("9. Show your comments made");
+        System.out.println("10. Show post's number of comments");
         System.out.println("0. Exit");
 
         int response = Input.integer();
@@ -165,11 +171,13 @@ public class Main {
             case 7:
                 break;
             case 8:
-                showUsersPosts(user);
+                showUsersPosts(user); // preguntar si se deben ver los comentarios
                 break;
             case 9:
+                showUserCommentsMade(user);
                 break;
             case 10:
+                showPostsCommentsNumber(user);
                 break;
             case 0:
                 System.out.println("See you soon!");
@@ -180,6 +188,7 @@ public class Main {
         }
 
     }
+
 
 
     private static void followUser(User userLogged) {
@@ -242,19 +251,25 @@ public class Main {
         switch (response){
             case 1:
                 Text t = new Text();
-                userLogged.getPostList().add(new Post(userLogged,t));
+                Post textPost = new Post(userLogged, t);
+                userLogged.getPostList().add(textPost);
+                totalPostsList.add(textPost);
                 System.out.println("Text posted successfully");
                 secondMenu(userLogged);
                 break;
             case 2:
                 Image img = new Image();
-                userLogged.getPostList().add(new Post(userLogged, img));
+                Post imgPost = new Post(userLogged, img);
+                userLogged.getPostList().add(imgPost);
+                totalPostsList.add(imgPost);
                 System.out.println("Picture posted successfully");
                 secondMenu(userLogged);
                 break;
             case 3:
                 Video vid = new Video();
-                userLogged.getPostList().add(new Post(userLogged, vid));
+                Post vidPost = new Post(userLogged, vid);
+                userLogged.getPostList().add(vidPost);
+                totalPostsList.add(vidPost);
                 System.out.println("Video posted successfully");
                 secondMenu(userLogged);
                 break;
@@ -319,7 +334,6 @@ public class Main {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
-
     private static void commentPost(User userLogged) {
         List<Post> postList = userLogged.getPostList();
         System.out.println("Type the nickname of the user who made the post: ");
@@ -349,11 +363,47 @@ public class Main {
             Comment comment = new Comment(userLogged, Input.string("Write it now! "));
             selectedPost.getCommentsList().add(comment);
 
+
             secondMenu(userLogged);
         } else {
             System.out.println("User doesn't exist. Try again later.");
         }
     }
+    private static void showPostsCommentsNumber(User userLogged) {
+
+            //shows all the posts in the social network
+            for (int i = 0; i <totalPostsList.size(); i++){
+                System.out.println( i + ": " + totalPostsList.get(i).toString());
+            }
+
+            int index = Input.integer("Type the index of the post you want to check the comments number ");
+            Post selectedPost = totalPostsList.get(index);
+
+            System.out.println("The number of comments for this post is: " +selectedPost.getCommentsList().size());
+
+            secondMenu(userLogged);
+    }
+    private static void showUserCommentsMade(User userLogged) {
+       /* List<Comment> userCommentsMade = new ArrayList<>();
+
+        for (User u : signedUpUsers){
+            for (Post p : u.getPostList()){
+                for (Comment c : p.getCommentsList()) {
+                    if (c.getAuthor().getName().equals(userLogged.getName())){
+                        userCommentsMade.add(c);
+                    }
+                }
+            }
+        }
+        System.out.println("Comments from user: " + userLogged.getName());
+
+        for (Comment c : userCommentsMade){
+            System.out.println(c.toString());
+        }
+*/
+            secondMenu(userLogged);
+    }
+
 
 
 

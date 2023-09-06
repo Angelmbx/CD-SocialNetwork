@@ -38,10 +38,14 @@ public class Input {
      * @return integer entered by the user.
      */
     public static int integer(String message) {
-        if (message != null) {
-            System.out.print(message);
+        int value = 0;
+        try {
+            if (message != null) {
+                System.out.print(message);
+            }
+            value = Integer.parseInt(Input.init());
+        } catch (Exception e){
         }
-        int value = Integer.parseInt(Input.init());
         return value;
     }
 
@@ -80,10 +84,15 @@ public class Input {
      * @return text string entered by the user.
      */
     public static String string(String message) {
-        if (message != null) {
-            System.out.print(message);
+        String value = null;
+        try {
+            if (message != null) {
+                System.out.print(message);
+            }
+            value = Input.init();
+        }catch (Exception ex){
+
         }
-        String value = Input.init();
         return value;
     }
 
