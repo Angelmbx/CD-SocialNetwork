@@ -172,6 +172,7 @@ public class Main {
                 }
                 break;
             case 6:
+                deletePost(user);
                 break;
             case 7:
                 break;
@@ -193,6 +194,7 @@ public class Main {
         }
 
     }
+
 
 
     private static void followUser(User userLogged) {
@@ -314,7 +316,6 @@ public class Main {
     }
 
     private static void showUsersPosts(User userLogged) {
-        List<Post> postList = userLogged.getPostList();
         System.out.println("Type the nickname of the user you want to check: ");
         String userName = Input.string();
 
@@ -333,7 +334,7 @@ public class Main {
 
             //shows posts by the typed username
             for (int i = 0; i < author.getPostList().size(); i++) {
-                System.out.println(i + ": " + author.getPostList().get(i).toString());
+                System.out.println( author.getPostList().get(i).getId()+ ": " + author.getPostList().get(i).toString());
             }
 
 
@@ -425,6 +426,32 @@ public class Main {
         }
 
     }
+    private static void deletePost(User userLogged) {
+       List<Post> posts = userLogged.getPostList();
+
+            //shows posts by the logged user
+            for (int i = 0; i < posts.size(); i++) {
+                System.out.println( posts.get(i).getId()+ ": " + posts.get(i).toString());
+            }
+
+            System.out.println("Select the number of the post you want to delete");
+            int postIndex = Input.integer();
+
+        for (int i = 0; i < posts.size(); i++) {
+            if( postIndex == posts.get(i).getId()){
+
+                posts.remove(i); //deletes the selected post
+            }
+        }
+        System.out.println("Post deleted successfully");
+            secondMenu(userLogged);
+
+    }
+
+
+
+
 }
+
 
 
