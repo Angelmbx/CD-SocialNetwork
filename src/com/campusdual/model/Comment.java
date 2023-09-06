@@ -7,21 +7,13 @@ public class Comment {
     private String text;
     private LocalDateTime date;
     private User author;
-    private Post commentedPost;
 
-    public Post getCommentedPost() {
-        return commentedPost;
-    }
-
-    public void setCommentedPost(Post commentedPost) {
-        this.commentedPost = commentedPost;
-    }
 
     public Comment() {
     this.date = LocalDateTime.now();
     }
 
-    public Comment( User author, String text, Post post) {
+    public Comment( User author, String text) {
         this.text = text;
         this.date = LocalDateTime.now();
         this.author = author;

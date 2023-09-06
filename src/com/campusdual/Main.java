@@ -44,11 +44,11 @@ public class Main {
 
         // Some users comments
 
-        Comment c = new Comment(u2,"Hey! I'm here!", p2);
+        Comment c = new Comment(u2,"Hey! I'm here!");
         p2.getCommentsList().add(c); //add the new comment to the post's comments list.
-        Comment c2 = new Comment(u4,"No sir, there's a bunch of us here!" ,p3);
+        Comment c2 = new Comment(u4,"No sir, there's a bunch of us here!");
         p3.getCommentsList().add(c2);
-        Comment c3 = new Comment(u1,"Nice picture",p5);
+        Comment c3 = new Comment(u1,"Nice picture");
         p5.getCommentsList().add(c3);
 
     }
@@ -165,6 +165,7 @@ public class Main {
             case 7:
                 break;
             case 8:
+                showUsersPosts(user);
                 break;
             case 9:
                 break;
@@ -179,6 +180,8 @@ public class Main {
         }
 
     }
+
+
     private static void followUser(User userLogged) {
         ArrayList<User> followedUsers = (ArrayList<User>) userLogged.getFollowedUsers();
 
@@ -287,6 +290,36 @@ public class Main {
         }
 
     }
+    private static void showUsersPosts(User userLogged) {
+        List<Post> postList = userLogged.getPostList();
+        System.out.println("Type the nickname of the user you want to check: ");
+        String userName = Input.string();
+
+        User author = null;
+
+        // Checks if the username exists.
+        boolean usernameExists = false;
+        for (User u : signedUpUsers) {
+            if (u.getName().toLowerCase().equals(userName.toLowerCase())) {
+                usernameExists = true;
+                author= u;
+                break;
+            }
+        }
+        if (usernameExists) {
+
+            //shows posts by the typed username
+            for (int i = 0; i < author.getPostList().size(); i++){
+                System.out.println( i + ": " + author.getPostList().get(i).toString());
+            }
+
+
+            secondMenu(userLogged);
+        } else {
+            System.out.println("User doesn't exist. Try again later.");
+        }
+    }
+
     private static void commentPost(User userLogged) {
         List<Post> postList = userLogged.getPostList();
         System.out.println("Type the nickname of the user who made the post: ");
@@ -309,6 +342,12 @@ public class Main {
             for (int i = 0; i < author.getPostList().size(); i++){
                 System.out.println( i + ": " + author.getPostList().get(i).toString());
             }
+
+            int index = Input.integer("Type the index of the post you want to comment: ");
+            Post selectedPost = author.getPostList().get(index);
+
+            Comment comment = new Comment(userLogged, Input.string("Write it now! "));
+            selectedPost.getCommentsList().add(comment);
 
             secondMenu(userLogged);
         } else {
